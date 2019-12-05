@@ -60,7 +60,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575513196417</updated>
-      <workItem from="1575513199465" duration="15558000" />
+      <workItem from="1575513199465" duration="18684000" />
     </task>
     <servers />
   </component>
@@ -77,5 +77,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/LuyenTapJava$Main.ic" NAME="Main Coverage Results" MODIFIED="1575537602043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

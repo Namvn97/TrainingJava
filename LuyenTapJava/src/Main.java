@@ -7,25 +7,24 @@ public class Main {
 
     private static void baitap() {
         // Câu a
-        String input1 = "1&2&3|7&8&5&4";
-        StringBuilder output = new StringBuilder();
-        output.append(input1).append(" -> ");
-        List<String> results = new ArrayList<>();
-        input1 = input1.replace("&", "");
-        int indexChar = input1.indexOf("|");
-        int start1 = 0;
-        while (start1 < indexChar) {
-            int start2 = indexChar + 1;
-            String chuoi = String.valueOf(input1.charAt(start1));
-            while (start2 < input1.length()) {
-                String kq = chuoi + input1.charAt(start2);
-                output.append(kq).append(",");
-                results.add(kq);
-                start2++;
-            }
-            start1++;
-        }
-
+//        String input1 = "1&2&3|7&8&5&4";
+//        StringBuilder output = new StringBuilder();
+//        output.append(input1).append(" -> ");
+//        List<String> results = new ArrayList<>();
+//        input1 = input1.replace("&", "");
+//        int indexChar = input1.indexOf("|");
+//        int start1 = 0;
+//        while (start1 < indexChar) {
+//            int start2 = indexChar + 1;
+//            String chuoi = String.valueOf(input1.charAt(start1));
+//            while (start2 < input1.length()) {
+//                String kq = chuoi + input1.charAt(start2);
+//                output.append(kq).append(",");
+//                results.add(kq);
+//                start2++;
+//            }
+//            start1++;
+//        }
 //        // Câu b
 //        String input2 = "17-02,03,25-38,37,27";
 //        StringBuilder number = new StringBuilder();
@@ -43,6 +42,24 @@ public class Main {
 //            }
 //        }
 
+        // câu a
+        String input1 = "1&2&3|7&8&5&4";
+        StringBuilder output = new StringBuilder();
+        output.append(input1).append(" -> ");
+        List<String> results = new ArrayList<>();
+        String[] arrayBai1 = input1.split("\\|");
+        String arrayString1 = arrayBai1[0];
+        String[] stringArray1 = arrayString1.split("&");
+        String arrayString2 = arrayBai1[1];
+        String[] stringArray2 = arrayString2.split("&");
+        for (int i = 0; i < stringArray1.length; i++) {
+            for (int j = 0; j < stringArray2.length; j++) {
+                StringBuilder string1 = new StringBuilder(stringArray1[i]);
+                string1.append(stringArray2[j]);
+                output.append(string1).append(",");
+                results.add(string1.toString());
+            }
+        }
 
         // câu b
         String input2 = "17-02,03,25-38,37,27";
