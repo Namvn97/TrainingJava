@@ -2,60 +2,60 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    private static int tongDiem = 0;
-    private static int countDiem = 3;
+    private static int sumScore = 0;
+    private static int score = 3;
 
     private static void baitap() {
-        String inputBai1 = "1&2&3|7&8";
-        StringBuilder dauvao = new StringBuilder();
-        dauvao.append(inputBai1).append(" -> ");
-        List<String> listKetQua = new ArrayList<>();
-        inputBai1 = inputBai1.replace("&", "");
-        int indexChar = inputBai1.indexOf("|");
+        String input1 = "1&2&3|7&8";
+        StringBuilder output = new StringBuilder();
+        output.append(input1).append(" -> ");
+        List<String> results = new ArrayList<>();
+        input1 = input1.replace("&", "");
+        int indexChar = input1.indexOf("|");
         int start1 = 0;
         while (start1 < indexChar) {
             int start2 = indexChar + 1;
-            String chuoi = String.valueOf(inputBai1.charAt(start1));
-            while (start2 < inputBai1.length()) {
-                String kq = chuoi + inputBai1.charAt(start2);
-                dauvao.append(kq).append(",");
-                listKetQua.add(kq);
+            String chuoi = String.valueOf(input1.charAt(start1));
+            while (start2 < input1.length()) {
+                String kq = chuoi + input1.charAt(start2);
+                output.append(kq).append(",");
+                results.add(kq);
                 start2++;
             }
             start1++;
         }
-        System.out.println(dauvao);
+        System.out.println(output);
 
 
-        String inputBai2 = "17-02,03-38,37,27";
-        StringBuilder chuoi = new StringBuilder();
-        for (int i = 0; i < inputBai2.length(); i++) {
-            String check = String.valueOf(inputBai2.charAt(i));
+        String input2 = "17-02,03-38,37,27";
+        StringBuilder number = new StringBuilder();
+        for (int i = 0; i < input2.length(); i++) {
+            String check = String.valueOf(input2.charAt(i));
             if (!(check.equals(",") || check.equals("-"))) {
-                chuoi.append(check);
+                number.append(check);
             } else {
                 if (check.equals(",")) {
-                    checkNumber(listKetQua, chuoi);
+                    checkNumber(results, number);
 
                 } else {
-                    checkNumber(listKetQua, chuoi);
-                    countDiem--;
+                    checkNumber(results, number);
+                    score--;
                 }
-                chuoi = new StringBuilder();
+                number = new StringBuilder();
             }
-            if (i == inputBai2.length() - 1) {
-                checkNumber(listKetQua, chuoi);
+            if (i == input2.length() - 1) {
+                checkNumber(results, number);
             }
         }
-        System.out.println("Số điểm: " + tongDiem);
+        System.out.println("Số điểm: " + sumScore);
     }
 
-    private static void checkNumber(List<String> listKetQua, StringBuilder chuoi) {
-        for (int j = 0; j < listKetQua.size(); j++) {
-            String checkDiem = listKetQua.get(j);
-            if (checkDiem.equals(chuoi.toString())) {
-                listKetQua.remove(checkDiem);
-                tongDiem += countDiem;
+    private static void checkNumber(List<String> results, StringBuilder numberCheck) {
+        for (int j = 0; j < results.size(); j++) {
+            String numberResult = results.get(j);
+            if (numberResult.equals(numberCheck.toString())) {
+                results.remove(numberResult);
+                sumScore += score;
                 break;
             }
         }
