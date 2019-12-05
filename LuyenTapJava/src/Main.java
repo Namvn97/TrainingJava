@@ -6,6 +6,7 @@ public class Main {
     private static int score = 3;
 
     private static void baitap() {
+        // Câu a
         String input1 = "1&2&3|7&8";
         StringBuilder output = new StringBuilder();
         output.append(input1).append(" -> ");
@@ -24,30 +25,38 @@ public class Main {
             }
             start1++;
         }
-        System.out.println(output);
 
-
+        // Câu b
         String input2 = "17-02,03-38,37,27";
         StringBuilder number = new StringBuilder();
         for (int i = 0; i < input2.length(); i++) {
             String check = String.valueOf(input2.charAt(i));
-            if (!(check.equals(",") || check.equals("-"))) {
+            if (isNotCommaOrHyphen(check)) {
                 number.append(check);
             } else {
-                if (check.equals(",")) {
-                    checkNumber(results, number);
-
-                } else {
-                    checkNumber(results, number);
-                    score--;
-                }
+                checkNumber(results, number);
                 number = new StringBuilder();
+                isSubScore(check);
             }
             if (i == input2.length() - 1) {
                 checkNumber(results, number);
             }
         }
-        System.out.println("Số điểm: " + sumScore);
+
+        System.out.println("input1 : " + input1);
+        System.out.println("input2 : " + input2);
+        System.out.println("Câu a : " + output);
+        System.out.println("Câu b : số điểm = " + sumScore);
+    }
+
+    private static void isSubScore(String check) {
+        if (check.equals("-")) {
+            score--;
+        }
+    }
+
+    private static boolean isNotCommaOrHyphen(String check) {
+        return !(check.equals(",") || check.equals("-"));
     }
 
     private static void checkNumber(List<String> results, StringBuilder numberCheck) {
