@@ -7,7 +7,7 @@ public class Main {
 
     private static void baitap() {
         // Câu a
-        String input1 = "1&2&3|7&8";
+        String input1 = "1&2&3|7&8&5&4";
         StringBuilder output = new StringBuilder();
         output.append(input1).append(" -> ");
         List<String> results = new ArrayList<>();
@@ -26,23 +26,35 @@ public class Main {
             start1++;
         }
 
-        // Câu b
-        String input2 = "17-02,03-38,37,27";
-        StringBuilder number = new StringBuilder();
-        for (int i = 0; i < input2.length(); i++) {
-            String check = String.valueOf(input2.charAt(i));
-            if (isNotCommaOrHyphen(check)) {
-                number.append(check);
-            } else {
-                checkNumber(results, number);
-                number = new StringBuilder();
-                isSubScore(check);
-            }
-            if (i == input2.length() - 1) {
-                checkNumber(results, number);
+//        // Câu b
+//        String input2 = "17-02,03,25-38,37,27";
+//        StringBuilder number = new StringBuilder();
+//        for (int i = 0; i < input2.length(); i++) {
+//            String check = String.valueOf(input2.charAt(i));
+//            if (isNotCommaOrHyphen(check)) {
+//                number.append(check);
+//            } else {
+//                checkNumber(results, number);
+//                number = new StringBuilder();
+//                isSubScore(check);
+//            }
+//            if (i == input2.length() - 1) {
+//                checkNumber(results, number);
+//            }
+//        }
+
+
+        // câu b
+        String input2 = "17-02,03,25-38,37,27";
+        String[] array1 = input2.split("-");
+        for (int i = 0; i < array1.length; i++) {
+            String[] array2 = array1[i].split(",");
+            for (int j = 0; j < array2.length; j++) {
+                if (results.contains(array2[i])) {
+                    sumScore += score - i;
+                }
             }
         }
-
         System.out.println("input1 : " + input1);
         System.out.println("input2 : " + input2);
         System.out.println("Câu a : " + output);
