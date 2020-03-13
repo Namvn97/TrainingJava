@@ -21,7 +21,7 @@ public class MainFormatDate {
                 Paths.get("C:\\Users\\phannam\\Downloads\\DMKH\\120"),
                 1, FileVisitOption.FOLLOW_LINKS)) {
             List<String> result = walk.filter(Files::isRegularFile)
-                    .map(x -> x.toString()).collect(Collectors.toList());
+                    .map(Path::toString).collect(Collectors.toList());
             result.forEach(System.out::println);
 
         } catch (IOException e) {
