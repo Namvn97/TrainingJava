@@ -2,21 +2,24 @@ import java.io.*;
 
 public class ReadFile {
 
-    static String input = "C:\\Users\\phannam\\Downloads\\CIF0000009.docx";
+    static String input = "D:\\test\\text.txt";
     //    static String output = "C:\\Users\\phannam\\Downloads\\output.txt";
     static String output = "C:\\Users\\phannam\\Downloads\\TestWord.docx";
 
     public static void main(String[] args) throws IOException, NoSuchMethodException {
-        String a = "";
-
-        String[] folderPath = a.split("\\\\");
-        String nameFile = null;
-        for (String str : folderPath) {
-            nameFile = str;
-            System.out.println(nameFile);
-        }
+//        String a = "";
+//
+//        String[] folderPath = a.split("\\\\");
+//        String nameFile = null;
+//        for (String str : folderPath) {
+//            nameFile = str;
+//            System.out.println(nameFile);
+//        }
 //        String typeFile = nameFile.split("\\.")[1];
 //        System.out.println(typeFile);
+
+        readFileText();
+
     }
 
     private static void readFileWithInputStream() throws IOException {
@@ -63,6 +66,31 @@ public class ReadFile {
             }
             if (bufferOut != null) {
                 bufferOut.close();
+            }
+        }
+    }
+
+    private static void readFileText(){
+        BufferedReader br = null;
+
+        try {
+            br = new BufferedReader(new FileReader(input));
+
+            System.out.println("Đọc nội dung file sử dụng phương thức readLine()");
+
+            String textInALine;
+
+            while ((textInALine = br.readLine()) != null) {
+                System.out.println(textInALine);
+                textInALine = br.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }

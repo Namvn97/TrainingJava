@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,23 +14,13 @@ public class MainTest {
         for (int i = 4; i < 7; i++) {
             b.add(i);
         }
+        String key1 = "pos1";
+        String key2 = "pos2";
+        String key3 = "pos3";
+        HashMap<String,List<Integer>> map = new HashMap<>();
+        map.put(key1,a);
 
-//        for (int i = 0; i < a.size(); i++) {
-//            System.out.println("a"  + a.get(i));
-//            for (int j = 0; j < b.size(); j++) {
-//                System.out.println("b"  + b.get(j));
-//            }
-//            System.out.println("hellonam");
-//        }
-
-        Iterator iterA = a.iterator();
-        Iterator iterB = b.iterator();
-        while (iterA.hasNext()) {
-            System.out.println("a" + iterA.next());
-            while (iterB.hasNext()) {
-                System.out.println("b" + iterB.next());
-            }
-            System.out.println("hello nam");
-        }
+        System.out.println(map.get(key1));
+        System.out.println(map.get(key2));
     }
 }
