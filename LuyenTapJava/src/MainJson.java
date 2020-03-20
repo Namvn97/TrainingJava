@@ -1,38 +1,47 @@
-import org.apache.commons.lang3.StringUtils;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class MainJson {
 
     public static void main(String[] args) {
-//        JSONObject o = new JSONObject();
-//        o.put("id", "");
-//        o.put("CIFNo", "CIF0001Nam");
-//        JSONArray employees = new JSONArray();
-//        employees.add(o);
-//        JSONObject a = (JSONObject) employees.get(0);
-//
-//        String d = (String) a.get("id");
-//        System.out.println(a.get("id"));
-//        System.out.println(a.get("CIFNo"));
-//        System.out.println(employees.get(0));
-//
-//        if (StringUtils.isBlank(d)) {
-//            System.out.println("rỗng");
-//        } else {
-//            System.out.println("no" + d);
-//        }
+        JSONObject o = new JSONObject();
+        o.put("caseID", "C950C42C-0652-4950-A413-4BCA34E0DE74");
+        o.put("CIFNo", "CIF0001");
+        o.put("Class", "TTTTT");
+        o.put("toDate","");
+        o.put("fromDate","");
+        o.put("exchangeNo","TM10001");
+        o.put("exchangeType","");
+        o.put("pos","110201");
 
-//        String folderPath = "20200918_Nguyen Van A_12345";
-//        String[] infoCustomer = folderPath.split("_");
-//        String cusName = infoCustomer[1];
-//        String cusId = infoCustomer[2];
-//        System.out.println("CIF - " + cusName + " name - " + cusId);
+        String input = "";
 
-        String str = "4.1 POS001";
-        String nameFile = str.substring(4);
+        String dataInputSoap = "";
+//        JSONParser parser = new JSONParser();
+//        JSONObject jsonInput = parser.parse(o);
+        dataInputSoap = inputSoap(o);
+        System.out.println(dataInputSoap);
 
-        System.out.println(str);
-        System.out.println(nameFile);
+
+    }
+
+    public static String inputSoap(JSONObject obj) {
+        StringBuilder data = new StringBuilder();
+        String keyStr = "";
+        String keyvalue = "";
+        for (Object entry : obj.keySet()) {
+            keyStr = entry.toString();
+            keyvalue = obj.get(entry).toString();
+            data.append(checkValueString(keyStr, keyvalue));
+        }
+        return data.toString();
+
+    }
+
+    public static String checkValueString(String key, String value) {
+        String data = "";
+        if (value != null && !value.isEmpty()) {
+            data += " \"" + key + "\": \"" + value + "\",\r\n";
+        }
+        return data;
     }
 }
